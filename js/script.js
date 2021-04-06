@@ -8,11 +8,14 @@ function clicked() {
     level = prefix[1];
     component = prefix[0];
 
-    //Separates and defines the document type (REQ and ICD)
-    if ((document.getElementsByClassName('module_info title')[0].textContent).split(" -", 1) == "REQ") {
+    //Separates and defines the document type (REQ and ICD) 
+    let doc = (document.getElementsByClassName('module_info title')[0].textContent).split(" -", 1);
+    if (doc == "REQ") {
         doc = "REQ";
-    } else {
+    } else if(doc == "ICD") {
         doc = "ICD";
+    }else{
+        doc = "Error"; //Returns "Error" for a wrong document type
     }
     //Runs each line of the table and inject the gmt id into the right column
     for (i = 0; i < 10; i++) {
